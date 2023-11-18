@@ -401,5 +401,6 @@ FodyWeavers.xsd
 
 # ignore api key
 *.apikey.txt
+*.appsettings.Development.json
 
 
