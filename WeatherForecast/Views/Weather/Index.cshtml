@@ -1,0 +1,69 @@
+﻿@model Weather 
+@{
+    ViewData["Title"] = "Get Weather";
+}
+
+<h1 class="custom-color">Get Weather</h1>
+<form asp-controller="Weather" asp-action="GetWeather" method="get">
+    <div class="row">
+        <div class="col-4 col-md-2">
+            <label class="custom-color3" for="city">City:</label>
+            <input type="text" name="city" required>
+        </div>
+        <div class="col-4 col-md-2">
+            <label class="custom-color3" for="country">Country:</label>
+            <input type="text" name="country" required>
+        </div>
+        <div class="col-4 col-md-2">
+             <button type="submit" class="btn btn-success  custom-color3">Get Weather</button>
+         </div>
+    </div>
+  
+     <style>
+       .custom-color {color: #a35398;}
+       .custom-color3 {color: #170540;}
+      </style>
+</form>
+
+@if (!string.IsNullOrEmpty(ViewBag.WeatherData))
+{
+    <h2>Weather: @ViewBag.WeatherData</h2>
+}
+
+
+         @if (!string.IsNullOrEmpty(ViewBag.Message))
+     {
+         <p class="alert alert-warning">@ViewBag.Message</p>
+     }
+        else if (Model != null)
+    {
+         <h2 class="text-danger">Weather:</h2>
+         <p>City: <span class="text-custom">@Model.City.Name ( @Model.City.Country )</span></p>
+         <p>Temperature: <span class="text-info">@Model.Temperature</span></p>
+         <p>At the moment: <span class="text-success">@Model.Day</span></p>
+         <p>Minimal temperature: <span class="text-warning">@Model.TemperatureMin</span></p>
+         <p>Maximum temperature: <span class="text-danger">@Model.Temperature_Max</span></p>
+         <p>Speed of wind: <span class="text-primary">@Model.SpeedOfWind</span></p>
+         <p>Clouds: <span class="text-info">@Model.Clouds %</span></p>
+         <p>Sunrise: <span class="text-warning">@Model.SunRise</span></p>
+         <p>Sunset: <span class="text-warning">@Model.SunSet</span></p>
+
+    }
+   
+    <style>
+    .text-custom { color: #8819e3; }
+    .text-info { color: blue; }
+    .text-success { color: green; }
+    .text-warning { color: yellow; }
+    .text-danger { color: red; }
+    .text-primary { color: #007bff; }
+</style>
+ <style>
+        body 
+        {
+            background-image: url('/images/weatherwelcome.jpg'); 
+            background-size: cover; 
+            background-position: center center; 
+            
+        }
+   </style>

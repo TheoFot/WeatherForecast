@@ -1,0 +1,81 @@
+﻿@model City 
+
+@{
+    ViewData["Title"] = " Get Weather Forecast Archive ";
+	
+}
+
+ <style>
+       .custom-color {color: #a35398;}
+       .custom-color3 {color: #170540;}
+  </style>
+  <style>
+        body 
+        {
+            background-image: url('/images/archivewelcome.jpg'); 
+            background-size: cover; 
+            background-position: center center; 
+            
+        }
+   </style>
+
+
+<h1 class="custom-color">Get Archive Data</h1>
+<form asp-controller="Weather" asp-action="GetArchive" method="get">
+    <div class="row">
+        <div class="col-4 col-md-2">
+            <label class="custom-color3" for="city">City:</label>
+            <input type="text" name="city" required>
+        </div>
+        <div class="col-4 col-md-2">
+            <label class="custom-color3" for="country">Country:</label>
+            <input type="text" name="country" required>
+        </div>
+        <div class="col-4 col-md-2">
+             <button type="submit" class="btn btn-success  custom-color3">Get</button>
+         </div>
+    </div>
+    </form>
+
+    <form>
+            @if (!string.IsNullOrEmpty(ViewBag.Message))
+             {
+                     <p class="alert alert-warning">@ViewBag.Message</p>
+             }
+           else if(@Model !=null)
+          {
+
+                <table class="table  table-bordered table-striped" >
+
+	            <thead>
+		
+		            <tr >
+			             <th class=" text-info" style="background-color : #90f0e9"> City</th>
+			             <th class=" text-info" style="background-color : #90f0e9"> Country</th>
+			            <th class=" text-info" style="background-color : #90f0e9">Temperature</th>
+			            <th class=" text-info" style="background-color : #90f0e9">Day&Time</th>
+			
+			
+		            </tr>
+
+	             </thead>
+                <tbody>
+                    @foreach (var weather in Model.Weathers)
+                    {
+                    
+               
+                         <tr>
+                            <td class="text-black" style="background-color: #a3f59d">@weather.City.Name</td>
+                            <td class="text-black" style="background-color: #a3f59d">@weather.City.Country</td>
+                            <td class="text-black" style="background-color: #a3f59d">@weather.Temperature</td>
+                               <td class="text-black" style="background-color: #a3f59d">@weather.Day</td>
+                        </tr>
+                     }
+
+                 </tbody>
+
+
+                 </table>
+      
+           }
+   </form>
