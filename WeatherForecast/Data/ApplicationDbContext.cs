@@ -17,7 +17,7 @@ namespace WeatherForecast.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //konfiguracja jeden do wielu
+            
            
             modelBuilder.Entity<City>()
                 .HasMany(w => w.Weathers)

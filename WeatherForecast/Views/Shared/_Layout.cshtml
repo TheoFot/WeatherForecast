@@ -65,12 +65,12 @@
 
 
  <script>
-        // Функція для оновлення дати та часу
+        
         function updateDatetime() {
             var currentDatetimeElement = document.getElementById("current-datetime");
             var currentDatetime = new Date();
 
-            // Форматування дати та часу у формат "рік-місяць-день година:хвилина:секунда"
+           
             var formattedDatetime =
                 currentDatetime.getDate().toString().padStart(2, "0") + "." +
                (currentDatetime.getMonth() + 1).toString().padStart(2, "0") + "." +
@@ -79,13 +79,13 @@
                 currentDatetime.getMinutes().toString().padStart(2, "0") + ":" +
                 currentDatetime.getSeconds().toString().padStart(2, "0");
 
-            // Вставка отформатованої дати та часу в елемент на сторінці
+            
             currentDatetimeElement.textContent = formattedDatetime;
         }
 
-        // Викликати функцію оновлення кожну секунду
+       
         setInterval(updateDatetime, 1000);
         
-        // Викликати функцію одразу для відображення початкової дати та часу
+       
         updateDatetime();
     </script>
