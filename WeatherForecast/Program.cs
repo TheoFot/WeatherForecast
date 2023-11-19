@@ -2,6 +2,9 @@ using Microsoft.EntityFrameworkCore;
 using WeatherForecast.Data;
 using WeatherForecast.Data.WeatherGetData;
 
+//Yes i add some commets
+//haha
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
