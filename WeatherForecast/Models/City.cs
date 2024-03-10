@@ -18,6 +18,7 @@ namespace WeatherForecast.Models
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Only 2 letters")]
+        [MaxLength(5)]
         public string Country { get; set; }
 
         public List<Weather> Weathers { get; set; } = new List<Weather>();

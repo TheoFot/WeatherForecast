@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WeatherForecast.Data;
 using WeatherForecast.Data.WeatherGetData;
@@ -16,12 +17,13 @@ namespace WeatherForecast.Controllers
             _weatherService = weatherService;
             _db = db;
         }
+        [Authorize]
         public IActionResult Index()
         {
             return View();
         }
 
-
+        [Authorize]
         public IActionResult GetWeather(string city, string country)
         {
             Console.WriteLine("Get weather method is ok ");
@@ -36,6 +38,8 @@ namespace WeatherForecast.Controllers
             return View("Index", weather);
         }
 
+
+        [Authorize]
         public IActionResult GetArchive(string city, string country)
         {
             Console.WriteLine("Get weather archive method is ok ");
@@ -49,8 +53,12 @@ namespace WeatherForecast.Controllers
             }
             return View("Archive", cityFromDb);
         }
+
+        [Authorize]
         public IActionResult Archive()
         {
+            
+           
             return View();
         }
 
